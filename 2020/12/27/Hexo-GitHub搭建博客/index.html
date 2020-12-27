@@ -186,7 +186,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      0 字
+      354 字
     </span>
   
 
@@ -196,7 +196,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      4
        分钟
     </span>
   
@@ -229,7 +229,50 @@
             <h1 style="display: none">Hexo+GitHub搭建博客</h1>
             
             <div class="markdown-body">
-              
+              <h4 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h4><ul>
+<li>GitHub账号</li>
+<li>安装nodejs</li>
+<li>安装git<h4 id="1-GitHub创建仓库"><a href="#1-GitHub创建仓库" class="headerlink" title="1. GitHub创建仓库"></a>1. GitHub创建仓库</h4><img src="https://img-blog.csdnimg.cn/20201227212754535.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MDA4MTQ4,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></li>
+<li>仓库名为 username.github.io</li>
+</ul>
+<h4 id="2-本地搭建博客网站"><a href="#2-本地搭建博客网站" class="headerlink" title="2.本地搭建博客网站"></a>2.本地搭建博客网站</h4><ol>
+<li>安装nodejs</li>
+</ol>
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">//确认是否安装成功<br>npm -v<br></code></pre></td></tr></table></figure></code></pre>
+<ol start="2">
+<li><p>安装git</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">//确认是否安装成功<br>git --version<br></code></pre></td></tr></table></figure></li>
+<li><p>安装hexo</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install hexo-cli -g<br></code></pre></td></tr></table></figure></li>
+<li><p>创建博客</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo init blog<br><span class="hljs-built_in">cd</span> blog<br>npm install<br></code></pre></td></tr></table></figure></li>
+<li><p>测试</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo g<br>hexo server<br></code></pre></td></tr></table></figure>
+<p>访问<a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a>查看本地搭建的网站</p>
+<h4 id="本地无密码连接GitHub"><a href="#本地无密码连接GitHub" class="headerlink" title="本地无密码连接GitHub"></a>本地无密码连接GitHub</h4></li>
+<li><p>在git命令行中设置用户名和邮箱</p>
+</li>
+<li><p>在Powershell（cmd）输入 ssh-keygen -t rsa -C “your email”回车，一直回车</p>
+</li>
+<li><p>在输出信息中找到生产密钥地址，一般是在.ssh文件夹，id_rsa.pub公钥文件，id_rsa是私钥文件。</p>
+</li>
+<li><p>复制id_rsa.pub文件中的内容，在GitHub设置中新建ssh key并填入生成公钥内容<br><img src="https://img-blog.csdnimg.cn/20201227214320329.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MDA4MTQ4,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20201227214443408.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MDA4MTQ4,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20201227214500715.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MDA4MTQ4,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+</li>
+<li><p>测试能否连接成功</p>
+   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh -T git@github.com<br></code></pre></td></tr></table></figure>
+<p>   命令行中输入上面的命令，提示连接成功则配置成功</p>
+<h4 id="将网站部署到GitHub上"><a href="#将网站部署到GitHub上" class="headerlink" title="将网站部署到GitHub上"></a>将网站部署到GitHub上</h4></li>
+<li><p>修改项目目录中_config.yml文件，具体修改内容如下</p>
+</li>
+</ol>
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">deploy:<br>  <span class="hljs-built_in">type</span>: git<br>  repo: https://github.com/GeJi133/GeJi133.github.io.git<br>  branch: main<br>  message: update<br></code></pre></td></tr></table></figure>
+branch的具体分支查看GitHub仓库&gt;&gt;Setting&gt;&gt;Options&gt;&gt;githubPages设置的分支
+![在这里插入图片描述](https://img-blog.csdnimg.cn/202012272154594.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MDA4MTQ4,size_16,color_FFFFFF,t_70)</code></pre>
+<ol start="2">
+<li>将搭建的网站push到GitHub上 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo clean<br>hexo d<br></code></pre></td></tr></table></figure></li>
+<li>输入username.github.io就可以看到自己的博客啦</li>
+</ol>
+
             </div>
             <hr>
             <div>
