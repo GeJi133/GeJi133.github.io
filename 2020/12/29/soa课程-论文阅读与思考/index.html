@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>Hexo+GitHub搭建博客 - GeJi Blog</title>
+  <title>soa课程-论文阅读与思考 - GeJi Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -162,9 +162,9 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Hexo+GitHub搭建博客">
+            <span class="h2" id="subtitle" title="soa课程-论文阅读与思考">
               
-                Hexo+GitHub搭建博客
+                soa课程-论文阅读与思考
               
             </span>
 
@@ -174,8 +174,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-12-27 21:14" pubdate>
-        December 27, 2020 pm
+      <time datetime="2020-12-29 22:27" pubdate>
+        December 29, 2020 pm
       </time>
     </span>
   
@@ -186,7 +186,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      354 字
+      2.1k 字
     </span>
   
 
@@ -196,7 +196,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      21
        分钟
     </span>
   
@@ -226,51 +226,112 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Hexo+GitHub搭建博客</h1>
+            <h1 style="display: none">soa课程-论文阅读与思考</h1>
             
             <div class="markdown-body">
-              <h4 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h4><ul>
-<li>GitHub账号</li>
-<li>安装nodejs</li>
-<li>安装git<h4 id="1-GitHub创建仓库"><a href="#1-GitHub创建仓库" class="headerlink" title="1. GitHub创建仓库"></a>1. GitHub创建仓库</h4><img src="https://img-blog.csdnimg.cn/20201227212754535.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MDA4MTQ4,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></li>
-<li>仓库名为 username.github.io</li>
+              <h1 id="api大实验：论文阅读总结-FAME-An-Influencer-Model-for-Service-Oriented-Environments"><a href="#api大实验：论文阅读总结-FAME-An-Influencer-Model-for-Service-Oriented-Environments" class="headerlink" title="api大实验：论文阅读总结 FAME: An Influencer Model for Service-Oriented Environments"></a>api大实验：论文阅读总结 FAME: An Influencer Model for Service-Oriented Environments</h1><h4 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h4><ol>
+<li><p>模型目的：帮助提供者增加api可见性，并帮助开发人员选择类中最好的api</p>
+<h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4></li>
+<li><p>背景<br> 集成api需要广泛的技术技能，如web、数据管理、编程和安全验证，为了克服这些困难，开发人员经常求助于编程社区，收集这些内容可以更好的理解开发人员与api之间的关系。</p>
+</li>
+<li><p>社会网络分析与面向服务的计算结合</p>
+</li>
+<li><p>分析社交内容以识别api的优势</p>
+<ul>
+<li>api使用者能够集成类别中最好的api</li>
+<li>使用者对使用api有不同的看法，基于api的特性来度量api影响有助于消费者选择合适的api</li>
+<li>识别有影响力的api可以让提供商提高api曝光度</li>
 </ul>
-<h4 id="2-本地搭建博客网站"><a href="#2-本地搭建博客网站" class="headerlink" title="2.本地搭建博客网站"></a>2.本地搭建博客网站</h4><ol>
-<li>安装nodejs</li>
+</li>
+<li><p>挑战</p>
+<ul>
+<li>社交数据分布在多个平台无法从但与来源准确获取，且不同平台以不同格式返回api相关数据</li>
+<li>现有的社区有关api的方面涵盖技术和非技术信息，需要一个多维模型捕捉api的各种特性</li>
+<li>新开发的api缺乏评估影响力的社会内容</li>
+</ul>
+</li>
+<li><p>文章贡献</p>
+<ul>
+<li>提出fame模型，提取18个api特性，进行情感分析量化开发者对api看法，引入累计api影响评分（AIS）评估api在mash uo和面向服务的应用对程序的影响</li>
+<li>使用最小二乘线性回归技术预测和部署现有api影响得分</li>
+<li>在四个编程平台进行试验<h4 id="方法概览"><a href="#方法概览" class="headerlink" title="方法概览"></a>方法概览</h4></li>
+</ul>
+</li>
+<li><p>使用场景</p>
+<ul>
+<li>开发人员选择合适api</li>
+<li>api开发者推广：<ol>
+<li>图好人衡量其他的api影响</li>
+<li>哪些特性对开发人员采用api产生影响</li>
+<li>不同的api特性是如何互联的</li>
+<li>为提高api影响力需要改进哪些特点</li>
 </ol>
-<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">//确认是否安装成功<br>npm -v<br></code></pre></td></tr></table></figure></code></pre>
-<ol start="2">
-<li><p>安装git</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">//确认是否安装成功<br>git --version<br></code></pre></td></tr></table></figure></li>
-<li><p>安装hexo</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install hexo-cli -g<br></code></pre></td></tr></table></figure></li>
-<li><p>创建博客</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo init blog<br><span class="hljs-built_in">cd</span> blog<br>npm install<br></code></pre></td></tr></table></figure></li>
-<li><p>测试</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo g<br>hexo server<br></code></pre></td></tr></table></figure>
-<p>访问<a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a>查看本地搭建的网站</p>
-<h4 id="本地无密码连接GitHub"><a href="#本地无密码连接GitHub" class="headerlink" title="本地无密码连接GitHub"></a>本地无密码连接GitHub</h4></li>
-<li><p>在git命令行中设置用户名和邮箱</p>
 </li>
-<li><p>在Powershell（cmd）输入 ssh-keygen -t rsa -C “your email”回车，一直回车</p>
+</ul>
 </li>
-<li><p>在输出信息中找到生产密钥地址，一般是在.ssh文件夹，id_rsa.pub公钥文件，id_rsa是私钥文件。</p>
+<li><p>FAME体系结构</p>
 </li>
-<li><p>复制id_rsa.pub文件中的内容，在GitHub设置中新建ssh key并填入生成公钥内容<br><img src="https://img-blog.csdnimg.cn/20201227214320329.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MDA4MTQ4,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20201227214443408.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MDA4MTQ4,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20201227214500715.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MDA4MTQ4,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<li><p>识别和预测影响者api的FAME方法</p>
+<ul>
+<li>非结构化数据提取器UDE<ol>
+<li>提取分析非结构化的来自开发者社区的api特性，</li>
+<li>通过情感分析量化文本特征，使用斯坦福自然语言处理解析器计算文本情感得分</li>
+<li>为文本特征关联权重，区分不同文本的重要性</li>
+<li>总情感定义为每个提取特征的加权情感/这些特征的总和</li>
+</ol>
 </li>
-<li><p>测试能否连接成功</p>
-   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh -T git@github.com<br></code></pre></td></tr></table></figure>
-<p>   命令行中输入上面的命令，提示连接成功则配置成功</p>
-<h4 id="将网站部署到GitHub上"><a href="#将网站部署到GitHub上" class="headerlink" title="将网站部署到GitHub上"></a>将网站部署到GitHub上</h4></li>
-<li><p>修改项目目录中_config.yml文件，具体修改内容如下</p>
+<li>结构化数据提取器<ol>
+<li>收集定量的api特征</li>
+<li>使用web数据提取框架提取元素，使用DOM解析数据提取特征</li>
+<li>通过查询计算索引中包含给定api名称的条目和查询计算包含给定api端点的条目数衡量api传播水平</li>
+</ol>
+</li>
+<li>FAME模型<ul>
+<li>API影响者得分<ol>
+<li>AIS是利用三种api特征计算出来的，分别是programmableWeb使用api的mashup数量、github上使用api的存储库的数量、对api的整体情绪；</li>
+<li>使用计算出的AIS得分定义api级别</li>
+</ol>
+</li>
+<li>影响评分预测<ol>
+<li>AIP提供者很难直接控制就散AIS的三个特性改进API，为了帮助API提供商提高API影响力，确定与AIS评分最相关的api特征，帮助api提供者提高api影响力</li>
+<li>使用最小二乘回归（NNLS）学习每个api的权重，根据特征与ais评分关联度对特征进行权重分配</li>
+<li>定义AIS预测模型，为新部署的api分配初始影响值，并且帮助api提供商预测ais分数变化<ul>
+<li>模型1<ul>
+<li>使用所有特征预测</li>
+<li>不符合预期结果，原因是ai得分取决于开发者情绪，而这是很难预测的</li>
+</ul>
+</li>
+<li>模型2<ul>
+<li>模型1变体，开发者情绪</li>
+</ul>
+</li>
+<li>模型3<h4 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h4>略<h4 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h4>基本是在讲大部分研究都集中在计算开发者和用户的影响力而不是api，而本文提出的模型通过在多个平台提取结构化和非结构化的特征计算api影响力</li>
+</ul>
 </li>
 </ol>
-<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">deploy:<br>  <span class="hljs-built_in">type</span>: git<br>  repo: https://github.com/GeJi133/GeJi133.github.io.git<br>  branch: main<br>  message: update<br></code></pre></td></tr></table></figure>
-branch的具体分支查看GitHub仓库&gt;&gt;Setting&gt;&gt;Options&gt;&gt;githubPages设置的分支
-![在这里插入图片描述](https://img-blog.csdnimg.cn/202012272154594.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MDA4MTQ4,size_16,color_FFFFFF,t_70)</code></pre>
-<ol start="2">
-<li>将搭建的网站push到GitHub上 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo clean<br>hexo d<br></code></pre></td></tr></table></figure></li>
-<li>输入username.github.io就可以看到自己的博客啦</li>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h4><ol>
+<li>将社会网络分析与面向服务计算相结合，提出FAME模型。利用社交网络具有的特点，如api使用者能够集成类别中最好的api、不同使用者能够从不同特性对api进行描述和评价等，对编程社区开发者发布的相关内容进行情感分析，量化开发者对api的看法，评估api在mashup和面向服务的应用对程序的影响。</li>
+<li>通过在多个编程社区提取结构化和非结构化的特性计算api影响力得分AIS，评估开发人员对使用api的看法，通过这些特征计算影响力得分AIS，并根据得分定义api级别。</li>
+<li>使用最小二乘回归计算api的各个特性对ais得分的影响，并提出预测模型，预测新部署的api和现有api的分数演变</li>
+<li>在GitHub、StackOverflow、HackerNews和ProgrammableWeb上进行实验，根据部署日期将提取的社交内容分类为五个数据集并计算每个数据集的召回率和精度。实验结果表明，该方法对影响因子api的预测精度高达87%。</li>
+</ol>
+<h4 id="创新点"><a href="#创新点" class="headerlink" title="创新点"></a>创新点</h4><ol>
+<li>现有的有关社会网络分析的研究大多将内容发布者作为影响者进行影响力的评估，而这篇文章将社会网络分析与面向服务计算相结合，创新性的将api作为影响者，研究api在社交网站中的影响力，从而帮助开发者选择合适的api，也帮助api提供者提高api的影响力。</li>
+<li>现有的有关api推荐的研究多集中在根据用户需求描述推荐api序列，但是这些算法仅考虑api提供的服务与用户需求的匹配度，并没有考虑api本身的影响力。而api影响力对api的质量和使用者未来的开发都可能产生影响，所以这篇文章提出评估api影响力得分AIS模型，帮助开发者选择高质量的api，提高开发任务完成效率。</li>
+<li>这篇文章不仅提出计算AIS计算方法，评估api在面向服务的应用中的影响力，同时也提出了AIS预测方法，一方面帮助新部署的api分配初始影响值解决冷启动问题，另一方面也帮助api提供者选取合适的特征进行优化，从而提高api的影响力。<h4 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h4></li>
+<li>模型中计算api影响力考虑的18个特征几乎都为api使用率和影响力的量化特征，而没有考虑api本身提供服务的特性。但实际应用中，开发者选择使用的api时只需要对与需求相符的api进行对比，所以对现有的所有api进行影响力等级划分意义并不大。可以针对api提供服务所属领域进行优化，考虑使用者需求与api匹配程度并对该领域下的api进行等级划分。</li>
+<li>现有的社交网络中对节点的研究已经比较成熟，考虑到在面向服务的应用程序中，各种api之间的调用也是衡量api影响力的标准之一，因此可以类比社交网络中节点关系拓扑图，将api作为节点，api之间的依赖调用作为边，基于现有的研究，利用PageRank和传播模型等进一步优化AIS得分计算方法。</li>
+<li>结合相关研究，该模型可应用于：<ul>
+<li>可以用于api推荐，结合现有的基于用户需求描述的api推荐算法，根据api匹配度和影响力为用户推荐最佳的api序列，在确保满足用户需求的同时为用户提供质量更高、影响力更大的api。帮助开发者有效实现开发任务</li>
+<li>帮助api开发者对api进行影响力评估，对api在社会网络的多个量化特性分析，并对比分析竞争对手的特性，有针对性的提供改进方案，提高api在mashup和面向服务的应用对程序的影响。</li>
+</ul>
+</li>
 </ol>
 
             </div>
@@ -288,18 +349,12 @@ branch的具体分支查看GitHub仓库&gt;&gt;Setting&gt;&gt;Options&gt;&gt;git
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/12/29/soa%E8%AF%BE%E7%A8%8B-%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E4%B8%8E%E6%80%9D%E8%80%83/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">soa课程-论文阅读与思考</span>
-                        <span class="visible-mobile">Vorheriger</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/12/27/about/">
-                        <span class="hidden-mobile">about</span>
+                      <a href="/2020/12/27/Hexo-GitHub%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">
+                        <span class="hidden-mobile">Hexo+GitHub搭建博客</span>
                         <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
