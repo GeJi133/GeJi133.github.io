@@ -1,0 +1,280 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>soa课程-论文阅读与思考 | momou的个人博客</title><meta name="author" content="momou"><meta name="copyright" content="momou"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="api大实验：论文阅读总结 FAME: An Influencer Model for Service-Oriented Environments 摘要  模型目的：帮助提供者增加api可见性，并帮助开发人员选择类中最好的api  介绍  背景 集成api需要广泛的技术技能，如web、数据管理、编程和安全验证，为了克服这些困难，开发人员经常求助于编程社区，收集这些内容可以更好的理解开发人员与api">
+<meta property="og:type" content="article">
+<meta property="og:title" content="soa课程-论文阅读与思考">
+<meta property="og:url" content="http://ame115.github.io/2020/12/29/soa%E8%AF%BE%E7%A8%8B-%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E4%B8%8E%E6%80%9D%E8%80%83/index.html">
+<meta property="og:site_name" content="momou的个人博客">
+<meta property="og:description" content="api大实验：论文阅读总结 FAME: An Influencer Model for Service-Oriented Environments 摘要  模型目的：帮助提供者增加api可见性，并帮助开发人员选择类中最好的api  介绍  背景 集成api需要广泛的技术技能，如web、数据管理、编程和安全验证，为了克服这些困难，开发人员经常求助于编程社区，收集这些内容可以更好的理解开发人员与api">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg">
+<meta property="article:published_time" content="2020-12-29T14:27:42.000Z">
+<meta property="article:modified_time" content="2021-11-25T08:08:57.958Z">
+<meta property="article:author" content="momou">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><link rel="shortcut icon" href="/img/%E9%A3%8E%E6%99%AF.png"><link rel="canonical" href="http://ame115.github.io/2020/12/29/soa%E8%AF%BE%E7%A8%8B-%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E4%B8%8E%E6%80%9D%E8%80%83/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/amekaki" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'soa课程-论文阅读与思考',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-11-25 16:08:57'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avator.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">momou的个人博客</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">soa课程-论文阅读与思考</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-12-29T14:27:42.000Z" title="发表于 2020-12-29 22:27:42">2020-12-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-11-25T08:08:57.958Z" title="更新于 2021-11-25 16:08:57">2021-11-25</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="soa课程-论文阅读与思考"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><h1>api大实验：论文阅读总结 FAME: An Influencer Model for Service-Oriented Environments</h1>
+<h4 id="摘要">摘要</h4>
+<ol>
+<li>模型目的：帮助提供者增加api可见性，并帮助开发人员选择类中最好的api</li>
+</ol>
+<h4 id="介绍">介绍</h4>
+<ol>
+<li>背景<br>
+集成api需要广泛的技术技能，如web、数据管理、编程和安全验证，为了克服这些困难，开发人员经常求助于编程社区，收集这些内容可以更好的理解开发人员与api之间的关系。</li>
+<li>社会网络分析与面向服务的计算结合</li>
+<li>分析社交内容以识别api的优势
+<ul>
+<li>api使用者能够集成类别中最好的api</li>
+<li>使用者对使用api有不同的看法，基于api的特性来度量api影响有助于消费者选择合适的api</li>
+<li>识别有影响力的api可以让提供商提高api曝光度</li>
+</ul>
+</li>
+<li>挑战
+<ul>
+<li>社交数据分布在多个平台无法从但与来源准确获取，且不同平台以不同格式返回api相关数据</li>
+<li>现有的社区有关api的方面涵盖技术和非技术信息，需要一个多维模型捕捉api的各种特性</li>
+<li>新开发的api缺乏评估影响力的社会内容</li>
+</ul>
+</li>
+<li>文章贡献
+<ul>
+<li>提出fame模型，提取18个api特性，进行情感分析量化开发者对api看法，引入累计api影响评分（AIS）评估api在mash uo和面向服务的应用对程序的影响</li>
+<li>使用最小二乘线性回归技术预测和部署现有api影响得分</li>
+<li>在四个编程平台进行试验</li>
+</ul>
+</li>
+</ol>
+<h4 id="方法概览">方法概览</h4>
+<ol>
+<li>
+<p>使用场景</p>
+<ul>
+<li>开发人员选择合适api</li>
+<li>api开发者推广：
+<ol>
+<li>图好人衡量其他的api影响</li>
+<li>哪些特性对开发人员采用api产生影响</li>
+<li>不同的api特性是如何互联的</li>
+<li>为提高api影响力需要改进哪些特点</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p>FAME体系结构</p>
+</li>
+<li>
+<p>识别和预测影响者api的FAME方法</p>
+<ul>
+<li>非结构化数据提取器UDE
+<ol>
+<li>提取分析非结构化的来自开发者社区的api特性，</li>
+<li>通过情感分析量化文本特征，使用斯坦福自然语言处理解析器计算文本情感得分</li>
+<li>为文本特征关联权重，区分不同文本的重要性</li>
+<li>总情感定义为每个提取特征的加权情感/这些特征的总和</li>
+</ol>
+</li>
+<li>结构化数据提取器
+<ol>
+<li>收集定量的api特征</li>
+<li>使用web数据提取框架提取元素，使用DOM解析数据提取特征</li>
+<li>通过查询计算索引中包含给定api名称的条目和查询计算包含给定api端点的条目数衡量api传播水平</li>
+</ol>
+</li>
+<li>FAME模型
+<ul>
+<li>API影响者得分
+<ol>
+<li>AIS是利用三种api特征计算出来的，分别是programmableWeb使用api的mashup数量、github上使用api的存储库的数量、对api的整体情绪；</li>
+<li>使用计算出的AIS得分定义api级别</li>
+</ol>
+</li>
+<li>影响评分预测
+<ol>
+<li>AIP提供者很难直接控制就散AIS的三个特性改进API，为了帮助API提供商提高API影响力，确定与AIS评分最相关的api特征，帮助api提供者提高api影响力</li>
+<li>使用最小二乘回归（NNLS）学习每个api的权重，根据特征与ais评分关联度对特征进行权重分配</li>
+<li>定义AIS预测模型，为新部署的api分配初始影响值，并且帮助api提供商预测ais分数变化
+<ul>
+<li>模型1
+<ul>
+<li>使用所有特征预测</li>
+<li>不符合预期结果，原因是ai得分取决于开发者情绪，而这是很难预测的</li>
+</ul>
+</li>
+<li>模型2
+<ul>
+<li>模型1变体，开发者情绪</li>
+</ul>
+</li>
+<li>模型3</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="实验">实验</h4>
+<p>略</p>
+<h4 id="相关工作">相关工作</h4>
+<p>基本是在讲大部分研究都集中在计算开发者和用户的影响力而不是api，而本文提出的模型通过在多个平台提取结构化和非结构化的特征计算api影响力</p>
+<h4 id="结论">结论</h4>
+<ol>
+<li>将社会网络分析与面向服务计算相结合，提出FAME模型。利用社交网络具有的特点，如api使用者能够集成类别中最好的api、不同使用者能够从不同特性对api进行描述和评价等，对编程社区开发者发布的相关内容进行情感分析，量化开发者对api的看法，评估api在mashup和面向服务的应用对程序的影响。</li>
+<li>通过在多个编程社区提取结构化和非结构化的特性计算api影响力得分AIS，评估开发人员对使用api的看法，通过这些特征计算影响力得分AIS，并根据得分定义api级别。</li>
+<li>使用最小二乘回归计算api的各个特性对ais得分的影响，并提出预测模型，预测新部署的api和现有api的分数演变</li>
+<li>在GitHub、StackOverflow、HackerNews和ProgrammableWeb上进行实验，根据部署日期将提取的社交内容分类为五个数据集并计算每个数据集的召回率和精度。实验结果表明，该方法对影响因子api的预测精度高达87%。</li>
+</ol>
+<h4 id="创新点">创新点</h4>
+<ol>
+<li>现有的有关社会网络分析的研究大多将内容发布者作为影响者进行影响力的评估，而这篇文章将社会网络分析与面向服务计算相结合，创新性的将api作为影响者，研究api在社交网站中的影响力，从而帮助开发者选择合适的api，也帮助api提供者提高api的影响力。</li>
+<li>现有的有关api推荐的研究多集中在根据用户需求描述推荐api序列，但是这些算法仅考虑api提供的服务与用户需求的匹配度，并没有考虑api本身的影响力。而api影响力对api的质量和使用者未来的开发都可能产生影响，所以这篇文章提出评估api影响力得分AIS模型，帮助开发者选择高质量的api，提高开发任务完成效率。</li>
+<li>这篇文章不仅提出计算AIS计算方法，评估api在面向服务的应用中的影响力，同时也提出了AIS预测方法，一方面帮助新部署的api分配初始影响值解决冷启动问题，另一方面也帮助api提供者选取合适的特征进行优化，从而提高api的影响力。</li>
+</ol>
+<h4 id="思考">思考</h4>
+<ol>
+<li>模型中计算api影响力考虑的18个特征几乎都为api使用率和影响力的量化特征，而没有考虑api本身提供服务的特性。但实际应用中，开发者选择使用的api时只需要对与需求相符的api进行对比，所以对现有的所有api进行影响力等级划分意义并不大。可以针对api提供服务所属领域进行优化，考虑使用者需求与api匹配程度并对该领域下的api进行等级划分。</li>
+<li>现有的社交网络中对节点的研究已经比较成熟，考虑到在面向服务的应用程序中，各种api之间的调用也是衡量api影响力的标准之一，因此可以类比社交网络中节点关系拓扑图，将api作为节点，api之间的依赖调用作为边，基于现有的研究，利用PageRank和传播模型等进一步优化AIS得分计算方法。</li>
+<li>结合相关研究，该模型可应用于：
+<ul>
+<li>可以用于api推荐，结合现有的基于用户需求描述的api推荐算法，根据api匹配度和影响力为用户推荐最佳的api序列，在确保满足用户需求的同时为用户提供质量更高、影响力更大的api。帮助开发者有效实现开发任务</li>
+<li>帮助api开发者对api进行影响力评估，对api在社会网络的多个量化特性分析，并对比分析竞争对手的特性，有针对性的提供改进方案，提高api在mashup和面向服务的应用对程序的影响。</li>
+</ul>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">momou</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://ame115.github.io/2020/12/29/soa%E8%AF%BE%E7%A8%8B-%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E4%B8%8E%E6%80%9D%E8%80%83/">http://ame115.github.io/2020/12/29/soa%E8%AF%BE%E7%A8%8B-%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E4%B8%8E%E6%80%9D%E8%80%83/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://ame115.github.io" target="_blank">momou的个人博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/12/04/%E7%AC%94%E8%AE%B0/"><img class="prev-cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">图像分类算法比较</div></div></a></div><div class="next-post pull-right"><a href="/2020/12/27/Hexo-GitHub%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"><img class="next-cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Hexo+GitHub搭建博客</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avator.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">momou</div><div class="author-info__description">keep moving, keep recording~</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/amekaki" target="_blank" title="Github"><i class="fab fa-github"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">api大实验：论文阅读总结 FAME: An Influencer Model for Service-Oriented Environments</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E6%A6%82%E8%A7%88"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">方法概览</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.0.0.4.</span> <span class="toc-text">实验</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.0.0.5.</span> <span class="toc-text">相关工作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA"><span class="toc-number">1.0.0.6.</span> <span class="toc-text">结论</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E6%96%B0%E7%82%B9"><span class="toc-number">1.0.0.7.</span> <span class="toc-text">创新点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E8%80%83"><span class="toc-number">1.0.0.8.</span> <span class="toc-text">思考</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/12/08/%E4%BF%A1%E5%8F%B7%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/" title="信号调制与解调"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="信号调制与解调"/></a><div class="content"><a class="title" href="/2021/12/08/%E4%BF%A1%E5%8F%B7%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/" title="信号调制与解调">信号调制与解调</a><time datetime="2021-12-08T05:00:25.000Z" title="发表于 2021-12-08 13:00:25">2021-12-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/05/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B01/" title="信号的表示"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="信号的表示"/></a><div class="content"><a class="title" href="/2021/12/05/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B01/" title="信号的表示">信号的表示</a><time datetime="2021-12-05T05:27:42.000Z" title="发表于 2021-12-05 13:27:42">2021-12-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/04/%E7%AC%94%E8%AE%B0/" title="图像分类算法比较"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="图像分类算法比较"/></a><div class="content"><a class="title" href="/2021/12/04/%E7%AC%94%E8%AE%B0/" title="图像分类算法比较">图像分类算法比较</a><time datetime="2021-12-04T14:27:42.000Z" title="发表于 2021-12-04 22:27:42">2021-12-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/12/29/soa%E8%AF%BE%E7%A8%8B-%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E4%B8%8E%E6%80%9D%E8%80%83/" title="soa课程-论文阅读与思考"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="soa课程-论文阅读与思考"/></a><div class="content"><a class="title" href="/2020/12/29/soa%E8%AF%BE%E7%A8%8B-%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E4%B8%8E%E6%80%9D%E8%80%83/" title="soa课程-论文阅读与思考">soa课程-论文阅读与思考</a><time datetime="2020-12-29T14:27:42.000Z" title="发表于 2020-12-29 22:27:42">2020-12-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/12/27/Hexo-GitHub%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" title="Hexo+GitHub搭建博客"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo+GitHub搭建博客"/></a><div class="content"><a class="title" href="/2020/12/27/Hexo-GitHub%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" title="Hexo+GitHub搭建博客">Hexo+GitHub搭建博客</a><time datetime="2020-12-27T13:14:28.000Z" title="发表于 2020-12-27 21:14:28">2020-12-27</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By momou</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.css"><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
