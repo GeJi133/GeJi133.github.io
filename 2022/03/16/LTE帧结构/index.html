@@ -1,0 +1,198 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>LTE帧结构 | momou的个人博客</title><meta name="keywords" content="基础知识"><meta name="author" content="momou"><meta name="copyright" content="momou"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="通信里面无线帧的逻辑 帧即周期，在这个周期内，一个小区会给正在与本小区做业务的所有的用户发送一遍数据  对于A用户来说，只占A部分的时隙，A用户用某个频率，用一个时隙后轮到B发送信息。 2G系统一个帧里系统只给用户发送一次数据，3G之后可以发送多次 4G帧结果分类 适用于分频双工FDD  一个子帧被几十个用户使用 调度：在一个子帧里给一个用户分配资源 TTI:传输时间间隔，调度时长 OFDM符号：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LTE帧结构">
+<meta property="og:url" content="http://ame115.github.io/2022/03/16/LTE%E5%B8%A7%E7%BB%93%E6%9E%84/index.html">
+<meta property="og:site_name" content="momou的个人博客">
+<meta property="og:description" content="通信里面无线帧的逻辑 帧即周期，在这个周期内，一个小区会给正在与本小区做业务的所有的用户发送一遍数据  对于A用户来说，只占A部分的时隙，A用户用某个频率，用一个时隙后轮到B发送信息。 2G系统一个帧里系统只给用户发送一次数据，3G之后可以发送多次 4G帧结果分类 适用于分频双工FDD  一个子帧被几十个用户使用 调度：在一个子帧里给一个用户分配资源 TTI:传输时间间隔，调度时长 OFDM符号：">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://ame115.github.io//article_img/2.png">
+<meta property="article:published_time" content="2022-03-16T13:14:28.000Z">
+<meta property="article:modified_time" content="2022-04-11T01:39:00.284Z">
+<meta property="article:author" content="momou">
+<meta property="article:tag" content="基础知识">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ame115.github.io//article_img/2.png"><link rel="shortcut icon" href="/img/%E9%A3%8E%E6%99%AF.png"><link rel="canonical" href="http://ame115.github.io/2022/03/16/LTE%E5%B8%A7%E7%BB%93%E6%9E%84/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/momou" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'LTE帧结构',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-04-11 09:39:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/photo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">momou的个人博客</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">LTE帧结构</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-16T13:14:28.000Z" title="发表于 2022-03-16 21:14:28">2022-03-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-04-11T01:39:00.284Z" title="更新于 2022-04-11 09:39:00">2022-04-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86/">通信原理</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="LTE帧结构"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><h2 id="通信里面无线帧的逻辑">通信里面无线帧的逻辑</h2>
+<p>帧即周期，在这个周期内，一个小区会给正在与本小区做业务的所有的用户发送一遍数据</p>
+<p><img src="https://typroimga.oss-cn-beijing.aliyuncs.com/img/image-20220313131640302.png" alt="image-20220313131640302"></p>
+<p>对于A用户来说，只占A部分的时隙，A用户用某个频率，用一个时隙后轮到B发送信息。</p>
+<p>2G系统一个帧里系统只给用户发送一次数据，3G之后可以发送多次</p>
+<h2 id="4G帧结果分类">4G帧结果分类</h2>
+<h3 id="适用于分频双工FDD">适用于分频双工FDD</h3>
+<p><img src="https://typroimga.oss-cn-beijing.aliyuncs.com/img/image-20220313132803119.png" alt="image-20220313132803119"></p>
+<p>一个子帧被几十个用户使用</p>
+<p>调度：在一个子帧里给一个用户分配资源</p>
+<p>TTI:传输时间间隔，调度时长</p>
+<p>OFDM符号：调制好的一个波形</p>
+<h4 id="子帧里的结构">子帧里的结构</h4>
+<p><img src="https://typroimga.oss-cn-beijing.aliyuncs.com/img/image-20220313141658051.png" alt="image-20220313141658051"></p>
+<p>LTE最高调制方式64QAM</p>
+<p>RE就是一个OFDM符号，一个RE对应的一个波形最多传6bit数据</p>
+<p>RB(资源块)，包含12*7=84个RE，传输84 * 6bit=504bit数据</p>
+<p><img src="https://typroimga.oss-cn-beijing.aliyuncs.com/img/image-20220313142915873.png" alt="image-20220313142915873"></p>
+<p>一个子帧里的RB数量取决于LTE带宽</p>
+<p>20M带宽LTE，一个子帧有200个RB，一个子帧可以传输的数据=200*504=100800bit</p>
+<p>LTE的毛速率=100800bit/1ms=200800000bit/s=100.8Mb/s</p>
+<p>其中有大约25%的系统开销，实际能用的约等于75Mb/s</p>
+<p>如果使用双载波聚合，那么速率会变成150mbps</p>
+<p>如果再2*MIMO一下，那么速率就会变成300Mbps/s</p>
+<p>每个用户至少分配一对RB，理论上在一个子帧中可以装100个用户，但实际上还受限于其他东西</p>
+<h4 id="CP（循环前缀">CP（循环前缀)</h4>
+<p>作用：为克服OFdm系统特有的符号间干扰ISI和子载波干扰ICI</p>
+<p>加CP操作：把波形最后一段复制到最前面</p>
+<p><img src="https://typroimga.oss-cn-beijing.aliyuncs.com/img/image-20220313144259260.png" alt="image-20220313144259260"></p>
+<p>多径效应：天线发出的信号是发散的，除了直接到达接收设备的路径，信号还可能会经过反射再次到达接收设备，所以对同样的信号，接受设备可能会受到多次</p>
+<p><img src="https://typroimga.oss-cn-beijing.aliyuncs.com/img/image-20220313145258183.png" alt="image-20220313145258183"></p>
+<p>加入CP后，第二径的第一个符号落在CP里，不会对第二个符号造成干扰</p>
+<h5 id="子载波干扰ICI">子载波干扰ICI</h5>
+<p>子载波正交，从数学上看一个OFDM符号时长内积分为0，理论上不会产生干扰</p>
+<p>子载波干扰产生原因：多径效应导致子载波之间积分不为0，两个子载波不正交</p>
+<h4 id="CP配置">CP配置</h4>
+<p><img src="https://typroimga.oss-cn-beijing.aliyuncs.com/img/image-20220313152129569.png" alt="image-20220313152129569"></p>
+<p>一般用到的是上下行普通CP，远距离使用上下行扩展CP，最后一种基本不用</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">momou</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://ame115.github.io/2022/03/16/LTE%E5%B8%A7%E7%BB%93%E6%9E%84/">http://ame115.github.io/2022/03/16/LTE%E5%B8%A7%E7%BB%93%E6%9E%84/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://ame115.github.io" target="_blank">momou的个人博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">基础知识</a></div><div class="post_share"><div class="social-share" data-image="/%5Carticle_img%5C2.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/03/17/LTE%E5%B8%A7%E5%90%8C%E6%AD%A5/"><img class="prev-cover" src="/%5Carticle_img%5C2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">LTE帧同步</div></div></a></div><div class="next-post pull-right"><a href="/2021/12/08/%E4%BF%A1%E5%8F%B7%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/"><img class="next-cover" src="/img/defaultcover.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">信号调制与解调</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/03/17/LTE%E5%B8%A7%E5%90%8C%E6%AD%A5/" title="LTE帧同步"><img class="cover" src="/%5Carticle_img%5C2.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-17</div><div class="title">LTE帧同步</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/photo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">momou</div><div class="author-info__description">大姐姐你喜欢吃青椒嘛~</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/amekaki" target="_blank" title="Github"><i class="fab fa-github"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E4%BF%A1%E9%87%8C%E9%9D%A2%E6%97%A0%E7%BA%BF%E5%B8%A7%E7%9A%84%E9%80%BB%E8%BE%91"><span class="toc-number">1.</span> <span class="toc-text">通信里面无线帧的逻辑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4G%E5%B8%A7%E7%BB%93%E6%9E%9C%E5%88%86%E7%B1%BB"><span class="toc-number">2.</span> <span class="toc-text">4G帧结果分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%82%E7%94%A8%E4%BA%8E%E5%88%86%E9%A2%91%E5%8F%8C%E5%B7%A5FDD"><span class="toc-number">2.1.</span> <span class="toc-text">适用于分频双工FDD</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%90%E5%B8%A7%E9%87%8C%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-number">2.1.1.</span> <span class="toc-text">子帧里的结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CP%EF%BC%88%E5%BE%AA%E7%8E%AF%E5%89%8D%E7%BC%80"><span class="toc-number">2.1.2.</span> <span class="toc-text">CP（循环前缀)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AD%90%E8%BD%BD%E6%B3%A2%E5%B9%B2%E6%89%B0ICI"><span class="toc-number">2.1.2.1.</span> <span class="toc-text">子载波干扰ICI</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CP%E9%85%8D%E7%BD%AE"><span class="toc-number">2.1.3.</span> <span class="toc-text">CP配置</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/03/17/LTE%E5%B8%A7%E5%90%8C%E6%AD%A5/" title="LTE帧同步"><img src="/%5Carticle_img%5C2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LTE帧同步"/></a><div class="content"><a class="title" href="/2022/03/17/LTE%E5%B8%A7%E5%90%8C%E6%AD%A5/" title="LTE帧同步">LTE帧同步</a><time datetime="2022-03-17T13:14:28.000Z" title="发表于 2022-03-17 21:14:28">2022-03-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/16/LTE%E5%B8%A7%E7%BB%93%E6%9E%84/" title="LTE帧结构"><img src="/%5Carticle_img%5C2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LTE帧结构"/></a><div class="content"><a class="title" href="/2022/03/16/LTE%E5%B8%A7%E7%BB%93%E6%9E%84/" title="LTE帧结构">LTE帧结构</a><time datetime="2022-03-16T13:14:28.000Z" title="发表于 2022-03-16 21:14:28">2022-03-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/08/%E4%BF%A1%E5%8F%B7%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/" title="信号调制与解调"><img src="/img/defaultcover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="信号调制与解调"/></a><div class="content"><a class="title" href="/2021/12/08/%E4%BF%A1%E5%8F%B7%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/" title="信号调制与解调">信号调制与解调</a><time datetime="2021-12-08T05:00:25.000Z" title="发表于 2021-12-08 13:00:25">2021-12-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/05/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B01/" title="信号的表示"><img src="/img/defaultcover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="信号的表示"/></a><div class="content"><a class="title" href="/2021/12/05/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B01/" title="信号的表示">信号的表示</a><time datetime="2021-12-05T05:27:42.000Z" title="发表于 2021-12-05 13:27:42">2021-12-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/04/%E7%AC%94%E8%AE%B0/" title="图像分类算法比较"><img src="/%5Carticle_img%5C1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="图像分类算法比较"/></a><div class="content"><a class="title" href="/2021/12/04/%E7%AC%94%E8%AE%B0/" title="图像分类算法比较">图像分类算法比较</a><time datetime="2021-12-04T14:27:42.000Z" title="发表于 2021-12-04 22:27:42">2021-12-04</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By momou</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.css"><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
