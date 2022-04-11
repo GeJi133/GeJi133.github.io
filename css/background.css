@@ -42,9 +42,23 @@
     color: #fff;
     background-color: #92d7cd;
 }
+/* #web_bg {
+  background: linear-gradient(to right, #f8f3ac, #e1f5c4);
+} */
 #web_bg {
-  background: linear-gradient(180deg, rgba(236,244,194,1) 28%, rgba(212,228,195,1) 100%);
-}
+    background: -webkit-linear-gradient(
+      0deg,
+      rgba(247, 149, 51, 0.1) 0,
+      rgba(243, 112, 85, 0.1) 15%,
+      rgba(239, 78, 123, 0.1) 30%,
+      rgba(161, 102, 171, 0.1) 44%,
+      rgba(80, 115, 184, 0.1) 58%,
+      rgba(16, 152, 173, 0.1) 72%,
+      rgba(7, 179, 155, 0.1) 86%,
+      rgba(109, 186, 130, 0.1) 100%
+    );
+  }
+  
 /*页脚自定义字段字体颜色*/
 /* 也就是配置文件里的footer_custom_text */
 /*.footer_custom_text {*/
